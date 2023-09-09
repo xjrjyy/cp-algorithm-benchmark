@@ -22,8 +22,9 @@ void run(const std::string &name, const std::string &args) {
 int main() {
     std::cin.tie(nullptr)->sync_with_stdio(false);
 
-    const std::map<std::string, std::vector<std::string>> algo = {
-        {"odt/main", {"0 10 10", "0 1000 1000", "0 1000000 1000000"}}
+    const std::vector<std::pair<std::string, std::vector<std::string>>> algo = {
+        {"odt/main", {"0 10 10", "0 1000 1000", "0 1000000 1000000"}},
+        {"fenwick/main", {"0 10 10", "0 1000 1000", "0 1000000 1000000"}}
     };
 
     for (auto [name, all_args] : algo) {
@@ -32,7 +33,7 @@ int main() {
             auto start = std::chrono::steady_clock::now();
             run(name, args);
             std::chrono::duration<double> diff = std::chrono::steady_clock::now() - start;
-            std::cout << name << "(" << args << "): " << diff.count() << "s\n";
+            std::cout << name << "(" << args << "): " << diff.count() << "s" << std::endl;
         }
     }
 
